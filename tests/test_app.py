@@ -73,12 +73,12 @@ def test_square():
 def test_sin():
     assert sin(math.pi/2) == 1
     assert sin(0) == 0
-    assert sin(math.pi) == 0
+    assert sin(math.pi) == 0.0
 
 def test_cos():
     assert cos(0) == 1
     assert cos(math.pi) == -1
-    assert cos(math.pi/2) == 0
+    assert cos(math.pi/2) == 0.0
 
 def test_square():
     assert sqrt(16) == 4
