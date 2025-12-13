@@ -99,5 +99,3 @@ def test_percentage():
         pass
     else:
         assert False, "Expected ValueError for percentage with denominator of zero"
-
-
