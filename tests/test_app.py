@@ -70,4 +70,4 @@ def test_square_root():
 def test_percentage():
     assert percentage(50, 200) == 25.0
     assert percentage(23, 100) == 23.0
-    assert percentage(10, 0) = ValueError
+    assert percentage(10, 0) == ValueError
