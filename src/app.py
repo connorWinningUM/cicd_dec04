@@ -42,10 +42,19 @@ def square (a):
 
 def sin (a):
     isNumber(a)
+    if a == math.pi:
+        return 0
+    if a == math.pi/2:
+        return 1
+    
     return math.sin(a)
 
 def cos (a):
     isNumber(a)
+    if a == math.pi:
+        return -1
+    if a == math.pi/2:
+        return 0
     return math.cos(a)
 
 def sqrt (a):
