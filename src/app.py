@@ -28,12 +28,16 @@ def mul (a, b):
 
 def div (a, b):
     bothAreNumbers(a, b)
+    if b == 0:
+        raise ValueError("Cannot divide by zero")
     return a/b
 
 # Advance operations: log, square, sin, cos, square root, percentage. 
 
 def log (a, base=10):
     isNumber(a)
+    if a <= 0:
+        raise ValueError("Cannot calculate log of negatives number")
     return math.log(a, base)
 
 def square (a):
