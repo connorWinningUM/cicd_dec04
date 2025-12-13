@@ -8,19 +8,14 @@ sys.path.insert(0, str(root / "src"))
 from app import add, sub, mul, div, log, square, sin, cos, sqrt, percentage
 import math
 
-addTestCases = [
-    (5, 6, 11),
-    (0, 0, 0),
-    (-5, 5, 0),
-    (-3, -7, -10),
-    (2.5, 2.5, 5.0),
-    ("sdsadf", 1, TypeError),
-    (None, 1, TypeError),
-]
-
 def test_add():
-    for a, b, expected in addTestCases:
-        assert add(a, b) == expected
+    assert add(1, 2) == 3
+    assert add(-1, 1) == 0
+    assert add(0, 0) == 0
+    assert add(-5, 5) == 0
+    assert add(1.5, 2.5) == 4.0
+    assert add("sdsadf", 1) == TypeError
+    assert add(None, 1) == TypeError
 
 def test_sub():
     assert sub(10, 5) == 5
