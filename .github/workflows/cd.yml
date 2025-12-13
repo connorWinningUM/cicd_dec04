@@ -1,13 +1,13 @@
 name: "CD"
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
-    branches: [ master ]
+    types: [closed]
+    branches: [ main, master ]
 
 jobs:
   run-tests:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     permissions:
       pages: write
@@ -35,7 +35,7 @@ jobs:
             --cov=. \
             --cov-report=term \
             --cov-report=xml \
-            --cov-report=html \
+            --cov-report=html
 
       - name: Prepare the webpage
         run: |
@@ -48,12 +48,17 @@ jobs:
         with:
           name: github-pages
           path: ./sites
+          
   Deploy:
-      needs: run-tests
-      runs-on: ubuntu-latest
-      permissions:
-        pages: write
-        id-token: write
-      steps:
-        - name: deploy the artifacts
-          uses: actions/deploy-pages@v4
+    needs: run-tests
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: deploy the artifacts
+        id: deployment
+        uses: actions/deploy-pages@v4
